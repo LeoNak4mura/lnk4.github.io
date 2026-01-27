@@ -37,3 +37,14 @@ footer {
   text-align: center;
   padding: 20px;
 }
+.topo {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.logo {
+  width: 140px;      /* ajuste se quiser */
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
