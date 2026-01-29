@@ -1,2 +1,2 @@
 # lnk4.github.io
-Portfólio profissional — marketing, comunicação e projetos digitais
+Portfólio profissional — divulgação e projetos digitais
