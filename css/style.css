@@ -1,0 +1,948 @@
+/* --- 1. VARIÁVEIS E RESET --- */
+:root {
+  --primary-color: #00ff88;
+  --bg-main: #000000;
+  --bg-secondary: #0a0a0a;
+  --card-bg: #121212;
+  --text-main: #ffffff;
+  --text-dim: #a0a0a0;
+  --border-color: #222222;
+  --font-main: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* --- 2. NAVBAR & MENU --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 8%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  transition: 0.4s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Ícone Sanduíche */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Animação do X no menu */
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- 3. HERO SECTION --- */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--primary-color), #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.typing-animation {
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  font-family: monospace;
+  overflow: hidden;
+  border-right: 3px solid var(--primary-color);
+  white-space: nowrap;
+  margin: 0 auto 4rem auto;
+  width: 0;
+  animation:
+    typing 8s steps(28, end) infinite,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0%,
+  10% {
+    width: 0;
+  }
+  70%,
+  90% {
+    width: 28ch;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  background-color: var(--primary-color);
+  color: #000;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* --- 4. SEÇÕES & REVEAL --- */
+.container {
+  padding: 100px 10%;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+  /* Uma transição um pouco mais rápida para o efeito infinito não "atrasar" a leitura */
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+footer.reveal.visible {
+  opacity: 1;
+}
+
+/* --- 5. SOBRE MIM --- */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 625px; /* Aumentei de 450px para 550px (ajuste como preferir) */
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adicionei uma sombra para dar destaque */
+  transition: transform 0.4s ease;
+}
+
+/* --- 6. EXPERIÊNCIAS PROFISSIONAIS --- */
+#experiences {
+  overflow-x: hidden;
+}
+
+.carousel-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.exp-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 280px;
+}
+
+.exp-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 255, 136, 0.1);
+}
+
+.exp-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Garante que o fundo não fique transparente se a imagem demorar */
+  background-color: var(--card-bg);
+  /* Lê a variável do HTML */
+  background-image: var(--bg-image); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Camada de escurecimento para o texto ficar legível */
+  filter: brightness(0.2); 
+  z-index: -1;
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+/* Efeito de zoom ao passar o mouse (opcional e elegante) */
+.exp-card:hover::before {
+  transform: scale(1.15);
+  filter: brightness(0.5);
+}
+
+.company-logo {
+  width: 100%;
+  max-width: 160px;
+  height: 100px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: all 0.4s ease;
+  margin-bottom: 1.5rem;
+}
+
+.exp-card:hover .company-logo {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+
+/* --- 7. CURSOS & CERTIFICAÇÕES --- */
+.courses-section {
+  padding-top: 0;
+}
+
+.courses-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.courses-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.courses-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.courses-carousel::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.courses-carousel::-webkit-scrollbar-track {
+  display: none;
+}
+
+.course-card {
+  flex: 0 0 auto;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 2rem;
+  min-width: auto;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 22px 65px rgba(0, 255, 136, 0.15);
+}
+
+.course-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 60%);
+  pointer-events: none;
+}
+
+.course-card * {
+  position: relative;
+  z-index: 1;
+}
+
+.course-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 255, 136, 0.12);
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.course-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.course-city {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.course-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.course-school {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.course-info .course-city {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
+}
+
+.course-card p {
+  color: var(--text-dim);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.carousel-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.carousel-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.carousel-button i {
+  font-size: 1rem;
+}
+
+/* --- 8. LINGUAGENS DE PROGRAMAÇÃO --- */
+.skills-section {
+  padding-top: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.skill-category {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.98) 0%, rgba(25, 25, 35, 0.95) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-category::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 50%);
+  pointer-events: none;
+}
+
+.skill-category:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 70px rgba(0, 255, 136, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 255, 136, 0.2);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+  z-index: 2;
+}
+
+.category-header i {
+  font-size: 2rem;
+  background: linear-gradient(135deg, #00ff88, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.category-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.skills-list li:hover {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.2);
+  padding-left: 1.5rem;
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+  min-width: 150px;
+}
+
+.skill-level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.9rem;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 191, 255, 0.1));
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    padding: 2rem 1.5rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .skill-category {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .category-header {
+    gap: 0.8rem;
+  }
+
+  .category-header i {
+    font-size: 1.6rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .skill-level-badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+  .skill-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .carousel-container {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .exp-card {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .carousel-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .exp-card {
+    min-height: auto;
+    padding: 2rem;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .courses-carousel {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .courses-carousel-wrapper {
+    gap: 0.65rem;
+  }
+
+  .carousel-button {
+    display: none;
+  }
+
+  .courses-carousel {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+
+/* --- 9. CONTATO --- */
+#contact {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 10%;
+  z-index: 1;
+}
+
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Lê a variável do HTML */
+  background-image: var(--bg-contact);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Opacidade e brilho para não ofuscar o texto */
+  opacity: 0.4; 
+  filter: brightness(0.3);
+  z-index: -1;
+}
+
+.contact-glass-card {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 3rem;
+  border-radius: 25px;
+  max-width: 450px;
+}
+
+.contact-link-modern {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.contact-link-modern:hover {
+  border-color: var(--primary-color);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.contact-link-modern i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* --- 9. MODAL DE EXPERIÊNCIAS --- */
+.exp-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.exp-modal.active {
+  display: flex;
+}
+
+.exp-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.exp-modal-card {
+  position: relative;
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  width: min(98%, 840px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  z-index: 1;
+  animation: appear 0.35s ease;
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.exp-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.exp-modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(90deg);
+}
+
+.exp-modal-banner {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.exp-modal-content {
+  padding: 2rem 2.2rem 2.4rem;
+  flex: 1;
+}
+
+.exp-modal-logo img {
+  width: 120px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.exp-modal-content h3 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.exp-modal-meta {
+  color: var(--text-dim);
+  margin-bottom: 1.4rem;
+  font-size: 0.96rem;
+}
+
+.exp-modal-content p {
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+/* --- 11. RODAPÉ --- */
+.main-footer {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(20, 20, 20, 0.8));
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 10%;
+  width: 100%;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.main-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.footer-tech {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* --- 12. RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 5%;
+  }
+
+  .menu-toggle {
+    display: flex !important;
+  }
+
+  .nav-links {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 75%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    gap: 3rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #contact {
+    justify-content: center;
+    padding: 0 5%;
+  }
+
+  .contact-glass-card {
+    text-align: center;
+  }
+
+  .contact-link-modern {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .typing-animation {
+    font-size: 1rem;
+  }
+
+  .exp-modal-card {
+    width: 95%;
+  }
+
+  .exp-modal-banner {
+    height: 180px;
+  }
+
+  .exp-modal-content {
+    padding: 1.5rem 1.5rem 1.8rem;
+  }
+
+  .exp-modal-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .exp-modal-logo img {
+    width: 100px;
+  }
+
+  .main-footer {
+    padding: 2.5rem 5%;
+    margin-top: 2rem;
+  }
+
+  .footer-content {
+    gap: 0.8rem;
+  }
+
+  .footer-content p {
+    font-size: 0.85rem;
+  }
+
+  .footer-tech {
+    font-size: 0.75rem;
+  }
+}

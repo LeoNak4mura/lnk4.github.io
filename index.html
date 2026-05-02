@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio Leonardo Santos</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Leonardo <span>Santos</span></div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#experiences">Experiências</a></li>
+            <li><a href="#courses">Cursos</a></li>
+            <li><a href="#skills">Conhecimentos</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Olá, eu sou <span>Leonardo</span></h1>
+            <p class="typing-animation">Bem-vindo ao meu Portfólio</p>
+            <a href="#about" class="btn">Começar</a>
+        </div>
+    </header>
+
+    <section id="about" class="container about-section">
+        <div class="about-container">
+            <div class="about-image reveal">
+                <img src="imagens/eu2.png" alt="Foto de Leonardo Santos" />
+            </div>
+
+            <div class="about-content">
+                <h2 class="reveal">Sobre Mim</h2>
+                <p class="about-text reveal">
+                    Profissional de Tecnologia da Informação com sólida experiência em 
+                    <strong>suporte técnico, infraestrutura de redes e atendimento ao cliente</strong>.
+                </p>
+                <p class="about-text reveal">
+                    Ao longo da minha trajetória, desenvolvi habilidades que me permitem atuar com eficiência tanto no suporte local quanto remoto.
+                </p>
+                <p class="about-text reveal">
+                    Meu objetivo é entregar qualidade e agilidade, unindo conhecimento técnico à resolução proativa de problemas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiences" class="container">
+        <h2 class="reveal">Experiências Profissionais</h2>
+
+        <div class="carousel-container">
+            <div class="exp-card reveal" style="--bg-image: url('../imagens/solar.jpg')" onclick="openExperience(this)" data-title="Técnico e Instalador" data-meta="SOLZ Engenharia e Energia Solar • Itatiba-SP • 2023 - 2025" data-text="Instalação, configuração e suporte em sistemas fotovoltaicos, com trabalho em inversores, painéis solares e monitoramento." data-image="imagens/solar.jpg">
+                <img src="imagens/solzlogo.jpeg" alt="Logo Solz" class="company-logo" />
+            </div>
+
+            <div class="exp-card reveal" style="--bg-image: url('../imagens/infra.png')" onclick="openExperience(this)" data-title="Analista de Infraestrutura" data-meta="SYSHELP Soluções em Conectividade • Itatiba-SP • 2021 - 2022" data-text="Suporte técnico local e remoto, instalação de CFTV, fibra óptica, redes estruturadas e equipamentos Intelbras." data-image="imagens/infra.png">
+                <img src="imagens/syshelplogo.jpg" alt="Logo Syshelp" class="company-logo" />
+            </div>
+
+            <div class="exp-card reveal" style="--bg-image: url('../imagens/helpdesk.png')" onclick="openExperience(this)" data-title="Operador HelpDesk" data-meta="ASBEC Faculdades Jorge Amado (UNIJORGE) • Salvador-BA • 2016 - 2018" data-text="Suporte técnico em ambiente educacional, administração de chamados, repasse de serviços a técnicos locais, manutenção avançada de equipamentos e monitoramento do sistema Ábaris, incluindo digitalização e assinaturas digitais em nuvem." data-image="imagens/helpdesk.png">
+                <img src="imagens/logo_unijorge.jpg" alt="Logo Unijorge" class="company-logo" />
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="container courses-section">
+        <h2 class="reveal">Cursos & Certificações</h2>
+
+        <div class="courses-carousel-wrapper reveal">
+            <button class="carousel-button prev" id="coursesPrev" aria-label="Anterior curso">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="courses-carousel" id="coursesCarousel">
+                <article class="course-card">
+                    <span class="course-pill">Curso</span>
+                    <h3>Montagem, Manutenção e Redes de Computadores</h3>
+                    <p class="course-info"><span class="course-school">People Informática</span> • <span class="course-city">Itatiba SP</span></p>
+                    <p>Aprendizado prático em montagem, configuração e manutenção de computadores e redes.</p>
+                </article>
+                <article class="course-card">
+                    <span class="course-pill">Certificação</span>
+                    <h3>Intelbras / CFTV</h3>
+                    <p class="course-info"><span class="course-school">Intelbras</span> • <span class="course-city">Campinas SP</span></p>
+                    <p>Curso de instalação e configuração de CFTV, equipamentos Intelbras e soluções de segurança.</p>
+                </article>
+                <article class="course-card">
+                    <span class="course-pill">Curso</span>
+                    <h3>Sistemas Fotovoltaicos</h3>
+                    <p class="course-info"><span class="course-school">Belenergy</span> • <span class="course-city">Vinhedo SP</span></p>
+                    <p>Capacitação em energia solar, instalação de painéis, inversores e monitoramento de performance.</p>
+                </article>
+                
+            </div>
+
+            <button class="carousel-button next" id="coursesNext" aria-label="Próximo curso">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <section id="skills" class="container skills-section">
+        <h2 class="reveal">Conhecimentos & Habilidades</h2>
+
+        <div class="skills-grid reveal">
+            <!-- Sistemas Operacionais -->
+            <article class="skill-category">
+                <div class="category-header">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Sistemas Operacionais</h3>
+                </div>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">Windows</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Linux</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Redes e Monitoramento -->
+            <article class="skill-category">
+                <div class="category-header">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Redes & Monitoramento</h3>
+                </div>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">Infraestrutura de Redes Avançado</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Zabbix</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Programação & Web -->
+            <article class="skill-category">
+                <div class="category-header">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Programação & Web</h3>
+                </div>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">HTML</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">CSS</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level-badge">Intermediário</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Pacote Office -->
+            <article class="skill-category">
+                <div class="category-header">
+                    <i class="fa-solid fa-file-word"></i>
+                    <h3>Pacote Office</h3>
+                </div>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">Word</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Excel</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">PowerPoint</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Outlook</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Design & Edição -->
+            <article class="skill-category">
+                <div class="category-header">
+                    <i class="fa-solid fa-palette"></i>
+                    <h3>Design & Edição</h3>
+                </div>
+                <ul class="skills-list">
+                    <li>
+                        <span class="skill-name">Photoshop</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Illustrator</span>
+                        <span class="skill-level-badge">Avançado</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">CorelDRAW</span>
+                        <span class="skill-level-badge">Intermediário</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Sony Vegas</span>
+                        <span class="skill-level-badge">Intermediário</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Premiere</span>
+                        <span class="skill-level-badge">Intermediário</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Dreamweaver</span>
+                        <span class="skill-level-badge">Intermediário</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Canva</span>
+                        <span class="skill-level-badge">Intermediário</span>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact" class="container" style="--bg-contact: url('../imagens/me.png')">
+        <div class="contact-glass-card reveal">
+            <h2>Vamos nos conectar?</h2>
+            <p>Estou sempre aberto a novas oportunidades e conexões no setor de TI.</p>
+
+            <div class="contact-actions">
+                <a href="mailto:leonardosantossa@yahoo.com" class="contact-link-modern">
+                    <i class="fa-solid fa-at"></i>
+                    <div class="text-group">
+                        <strong>E-mail</strong>
+                        <span>leonardosantossa@yahoo.com</span>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com/in/leonardosantoslnk" target="_blank" class="contact-link-modern">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <div class="text-group">
+                        <strong>LinkedIn</strong>
+                        <span>linkedin.com/in/leonardosantoslnk</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content reveal">
+            <p>&copy; 2026 Leonardo Santos. Todos os direitos reservados.</p>
+            <span class="footer-tech">Desenvolvido com HTML, CSS e JS</span>
+        </div>
+    </footer>
+
+    <div class="exp-modal" id="expModal">
+        <div class="exp-modal-backdrop" id="expBackdrop"></div>
+        <div class="exp-modal-card">
+            <button class="exp-modal-close" id="expClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="exp-modal-banner" id="expBanner"></div>
+            <div class="exp-modal-content">
+                <div class="exp-modal-logo">
+                    <img id="expLogo" src="" alt="Logo da empresa" />
+                </div>
+                <h3 id="expTitle"></h3>
+                <p class="exp-modal-meta" id="expMeta"></p>
+                <p id="expText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
